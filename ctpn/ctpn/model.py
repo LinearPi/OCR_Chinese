@@ -9,9 +9,9 @@ base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 
 sys.path.append(os.getcwd())
-from lib.fast_rcnn.config import cfg
-from lib.networks.factory import get_network
-from lib.fast_rcnn.test import test_ctpn
+from ..lib.fast_rcnn.config import cfg
+from ..lib.networks.factory import get_network
+from ..lib.fast_rcnn.test import test_ctpn
 
 # from ..lib.networks.factory import get_network
 # from ..lib.fast_rcnn.config import cfg
@@ -33,7 +33,7 @@ def load_tf_model():
     saver = tf.train.Saver()
     # sess = tf.Session(config=config)
     sess = tf.Session()
-    ckpt_path = '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/ctpn/retrain/ckpt'
+    ckpt_path = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/models'
     ckpt = tf.train.get_checkpoint_state(ckpt_path)
     reader = tf.train.NewCheckpointReader(ckpt.model_checkpoint_path)
     var_to_shape_map = reader.get_variable_to_shape_map()

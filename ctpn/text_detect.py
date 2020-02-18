@@ -17,3 +17,4 @@ def text_detect(img):
     text_recs, tmp = draw_boxes(
         img, boxes, caption='im_name', wait=True, is_display=True)
     return text_recs, tmp, img
+

@@ -83,7 +83,7 @@ def dumpRotateImage(img, degree, pt1, pt2, pt3, pt4):
                                   np.array([[pt3[0]], [pt3[1]], [1]]))
     ydim, xdim = imgRotation.shape[:2]
     imgOut = imgRotation[max(1, int(pt1[1])):min(ydim - 1, int(pt3[1])),
-                         max(1, int(pt1[0])):min(xdim - 1, int(pt3[0]))]
+             max(1, int(pt1[0])):min(xdim - 1, int(pt3[0]))]
     # height,width=imgOut.shape[:2]
     return imgOut
 
@@ -111,7 +111,7 @@ def model(img, model='keras', adjust=False, detectAngle=False):
             im = im.transpose(Image.ROTATE_270)
         img = np.array(im)
     # 进行图像中的文字区域的识别
-    text_recs, tmp, img=text_detect(img)
+    text_recs, tmp, img = text_detect(img)
     # 识别区域排列
     text_recs = sort_box(text_recs)
     # 

@@ -230,3 +230,4 @@ https://pan.baidu.com/s/1dFda6R3
 - [tensorflow-ctpn](https://github.com/eragonruan/text-detection-ctpn )
 - [CAFFE-CTPN](https://github.com/tianzhi0549/CTPN)
 
+
