@@ -84,7 +84,7 @@ class Network(object):
         return '%s_%d' % (prefix, id)
 
     def make_var(self, name, shape, initializer=None, trainable=True, regularizer=None):
-        return tf.get_variable(name, shape, initializer=initializer, trainable=trainable, regularizer=regularizer)
+        return tf.compat.v1.get_variable(name, shape, initializer=initializer, trainable=trainable, regularizer=regularizer)
 
     def validate_padding(self, padding):
         assert padding in ('SAME', 'VALID')
@@ -169,7 +169,7 @@ class Network(object):
 
         def convolve(i, k): return tf.nn.conv2d(
             i, k, [1, s_h, s_w, 1], padding=padding)
-        with tf.variable_scope(name) as scope:
+        with tf.compat.v1.variable_scope(name) as scope:
 
             init_weights = tf.truncated_normal_initializer(0.0, stddev=0.01)
             init_biases = tf.constant_initializer(0.0)
@@ -195,7 +195,7 @@ class Network(object):
     @layer
     def max_pool(self, input, k_h, k_w, s_h, s_w, name, padding=DEFAULT_PADDING):
         self.validate_padding(padding)
-        return tf.nn.max_pool(input,
+        return tf.nn.max_pool2d(input,
                               ksize=[1, k_h, k_w, 1],
                               strides=[1, s_h, s_w, 1],
                               padding=padding,

@@ -5,8 +5,8 @@ import tensorflow as tf
 
 from .cfg import Config
 from .other import resize_im
-base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 sys.path.append(os.getcwd())
 from ..lib.fast_rcnn.config import cfg
@@ -22,6 +22,8 @@ load network
 'VGGnet_test'--test
 'VGGnet_train'-train
 '''
+
+
 # sess=tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(log_device_placement=True))
 
 def load_tf_model():
@@ -31,9 +33,17 @@ def load_tf_model():
     net = get_network("VGGnet_test")
     # load model
     saver = tf.train.Saver()
+<<<<<<< HEAD
+    # sess = tf.compat.v1.Session(config=config)
+    sess = tf.compat.v1.Session()
+    ckpt_path = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/checkpoints'
+
+
+=======
     # sess = tf.Session(config=config)
     sess = tf.Session()
     ckpt_path = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/models'
+>>>>>>> c2c942a1b0674ca363874c06a2ae56f5f869b218
     ckpt = tf.train.get_checkpoint_state(ckpt_path)
     reader = tf.train.NewCheckpointReader(ckpt.model_checkpoint_path)
     var_to_shape_map = reader.get_variable_to_shape_map()
@@ -43,7 +53,6 @@ def load_tf_model():
     saver.restore(sess, ckpt.model_checkpoint_path)
     print("load vggnet done")
     return sess, saver, net
-
 
 
 # init model

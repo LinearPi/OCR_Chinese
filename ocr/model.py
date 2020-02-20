@@ -71,8 +71,8 @@ def get_model(height, nclass):
 
 
 characters = keys_ocr.alphabet[:]
-modelPath = os.path.join(os.getcwd(), "ocr/ocr0.2.h5")
-# modelPath = '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/save_model/my_model_keras.h5'
+# modelPath = "/Users/linear/Documents/pycode/CHINESE-OCR/ocr/ocr0.2.h5"
+modelPath = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/my_model_keras.h5'
 height = 32
 nclass=len(characters)+1
 if os.path.exists(modelPath):

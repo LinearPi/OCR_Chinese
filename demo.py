@@ -11,7 +11,7 @@ import model
 paths = glob('./test/*.*')
 
 if __name__ == '__main__':
-    im = Image.open("./test/3.png")
+    im = Image.open("./test/004.jpg")
     img = np.array(im.convert('RGB'))
     t = time.time()
     '''

@@ -128,8 +128,8 @@ class SolverWrapper(object):
         else:
             train_op = opt.minimize(total_loss, global_step=global_step)
 
-        # intialize variables
-        sess.run(tf.global_variables_initializer())
+        # intialize variables tf.compat.v1.global_variables
+        sess.run(tf.compat.v1.global_variables_initializer())
         restore_iter = 0
 
         # load vgg16
@@ -233,7 +233,7 @@ def get_data_layer(roidb, num_classes):
     """return a data layer."""
     if cfg.TRAIN.HAS_RPN:
         if cfg.IS_MULTISCALE:
-            # obsolete
+            # obsolete v
             # layer = GtDataLayer(roidb)
             raise "Calling caffe modules..."
         else:
@@ -257,7 +257,7 @@ def train_net(network,
     config = tf.ConfigProto(allow_soft_placement=True)
     config.gpu_options.allocator_type = 'BFC'
     config.gpu_options.per_process_gpu_memory_fraction = 0.75
-    with tf.Session(config=config) as sess:
+    with tf.compat.v1.Session(config=config) as sess:
         sw = SolverWrapper(
             sess,
             network,

@@ -6,6 +6,7 @@ import torch
 import time
 import os
 import sys
+
 sys.path.insert(0, os.getcwd())
 import tensorflow as tf
 import pydot
@@ -16,11 +17,12 @@ from keras.utils import plot_model
 
 characters = keys_keras.alphabet[:]
 from model import get_model
+
 nclass = len(characters) + 1
 trainroot = '../data/lmdb/train'
 valroot = '../data/lmdb/val'
 # modelPath = '../pretrain-models/keras.hdf5'
-modelPath = '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/save_model/my_model_keras.h5'
+modelPath = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/my_model_keras.h5'
 workers = 4
 imgH = 32
 imgW = 256
@@ -35,7 +37,7 @@ LEARNING_RATE = 0.01
 Learning_decay_step = 20000
 PERCEPTION = 0.3
 EPOCH_NUMS = 1000000
-MODEL_PATH = '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/save_model'
+MODEL_PATH = '/Users/linear/Documents/pycode/CHINESE-OCR'
 LOG_FILE = 'log.txt'
 SUMMARY_PATH = './log/'
 if not os.path.exists(MODEL_PATH):
@@ -47,9 +49,9 @@ if not os.path.exists(SUMMARY_PATH):
 model, basemodel = get_model(
     height=imgH, nclass=nclass, learning_rate=LEARNING_RATE)
 
-config = tf.ConfigProto(intra_op_parallelism_threads=2)
+config = tf.compat.v1.ConfigProto(intra_op_parallelism_threads=2)
 config.gpu_options.per_process_gpu_memory_fraction = PERCEPTION
-KTF.set_session(tf.Session(config=config))
+KTF.set_session(tf.compat.v1.Session(config=config))
 
 # 加载预训练参数
 if os.path.exists(modelPath):
@@ -124,8 +126,8 @@ for i in range(EPOCH_NUMS):
             Y = np.array(Y)
             batch = X.shape[0]
             X_val, Y_val = [
-                X, Y, np.ones(batch) * Length,
-                np.ones(batch) * n_len], np.ones(batch)
+                               X, Y, np.ones(batch) * Length,
+                                     np.ones(batch) * n_len], np.ones(batch)
             crrentLoss = model.evaluate(X_val, Y_val)
             print('Learning rate is: ', LEARNING_RATE)
             now_time = time.strftime('%Y/%m/%d-%H:%M:%S',
