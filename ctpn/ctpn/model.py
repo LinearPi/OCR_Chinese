@@ -33,17 +33,11 @@ def load_tf_model():
     net = get_network("VGGnet_test")
     # load model
     saver = tf.train.Saver()
-<<<<<<< HEAD
-    # sess = tf.compat.v1.Session(config=config)
-    sess = tf.compat.v1.Session()
-    ckpt_path = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/checkpoints'
 
-
-=======
     # sess = tf.Session(config=config)
     sess = tf.Session()
-    ckpt_path = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/models'
->>>>>>> c2c942a1b0674ca363874c06a2ae56f5f869b218
+    ckpt_path = '/Users/linear/Documents/pycode/CHINESE-OCR/ctpn/checkpoints'
+
     ckpt = tf.train.get_checkpoint_state(ckpt_path)
     reader = tf.train.NewCheckpointReader(ckpt.model_checkpoint_path)
     var_to_shape_map = reader.get_variable_to_shape_map()

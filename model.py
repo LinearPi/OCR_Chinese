@@ -107,7 +107,9 @@ def model(img, model='keras', adjust=False, detectAngle=False):
             im = im.transpose(Image.ROTATE_90)
         elif angle == 180:
             im = im.transpose(Image.ROTATE_180)
+
         elif angle == 270:
+
             im = im.transpose(Image.ROTATE_270)
         img = np.array(im)
     # 进行图像中的文字区域的识别

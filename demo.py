@@ -11,7 +11,7 @@ import model
 paths = glob('./test/*.*')
 
 if __name__ == '__main__':
-    im = Image.open("./test/004.jpg")
+    im = Image.open("/Users/linear/Documents/pycode/CHINESE-OCR/imgtest/021.jpeg")
     img = np.array(im.convert('RGB'))
     t = time.time()
     '''

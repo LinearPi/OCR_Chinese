@@ -109,3 +109,6 @@ ENV/
 
 ctpn/VOCdevkit/
 ctpn/checkpoints/
+ctpn/netCRNN_pytorch.pth
+VOCdevkit.zip
+ctpn/VGG_imagenet.npy

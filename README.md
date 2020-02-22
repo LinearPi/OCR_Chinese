@@ -126,7 +126,7 @@ parser.add_argument(
 `===========================================================`
 ![ctpn检测2](./test/test_pre.png)
 `===========================================================`
-![ctpn+crnn结果2](./test/test_result.png)
+![ctpn+crnn结果2](test/test_result_001.png)
 
 # 未完待续
 
